@@ -8,6 +8,7 @@ import { Customer } from '../customer';
 })
 export class CustomersPageComponent {
   customers: Array<Customer> = [];
+
   constructor() {
     this.customers.push({
       _id: '1',
