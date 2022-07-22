@@ -13,9 +13,11 @@ import { LeftTopNavComponent } from './layout/header/top-nav/left-top-nav/left-t
 import { RightTopNavComponent } from './layout/header/top-nav/right-top-nav/right-top-nav.component';
 import { LoggedComponent } from './layout/header/top-nav/right-top-nav/logged/logged.component';
 import { NotLoggedComponent } from './layout/header/top-nav/right-top-nav/not-logged/not-logged.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { TopNavLinkComponent } from './layout/header/top-nav/top-nav-link/top-nav-link.component';
 
 @NgModule({
-  declarations: [AppComponent, CustomersPageComponent, HeaderComponent, FooterComponent, MainComponent, SideNavComponent, LogoComponent, HamburgerComponent, LeftTopNavComponent, RightTopNavComponent, LoggedComponent, NotLoggedComponent],
+  declarations: [AppComponent, CustomersPageComponent, HeaderComponent, FooterComponent, MainComponent, SideNavComponent, LogoComponent, HamburgerComponent, LeftTopNavComponent, RightTopNavComponent, LoggedComponent, NotLoggedComponent, PageHeaderComponent, TopNavLinkComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
