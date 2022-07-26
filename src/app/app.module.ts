@@ -15,9 +15,10 @@ import { LoggedComponent } from './layout/header/top-nav/right-top-nav/logged/lo
 import { NotLoggedComponent } from './layout/header/top-nav/right-top-nav/not-logged/not-logged.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { TopNavLinkComponent } from './layout/header/top-nav/top-nav-link/top-nav-link.component';
+import { TextCapitalPipe } from './pipes/text-capital.pipe';
 
 @NgModule({
-  declarations: [AppComponent, CustomersPageComponent, HeaderComponent, FooterComponent, MainComponent, SideNavComponent, LogoComponent, HamburgerComponent, LeftTopNavComponent, RightTopNavComponent, LoggedComponent, NotLoggedComponent, PageHeaderComponent, TopNavLinkComponent],
+  declarations: [AppComponent, CustomersPageComponent, HeaderComponent, FooterComponent, MainComponent, SideNavComponent, LogoComponent, HamburgerComponent, LeftTopNavComponent, RightTopNavComponent, LoggedComponent, NotLoggedComponent, PageHeaderComponent, TopNavLinkComponent, TextCapitalPipe],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

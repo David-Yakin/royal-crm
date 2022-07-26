@@ -5,10 +5,10 @@
 >
 </page-header>
 
-<table class="table">
+<table *ngIf="customers.length; else noCustomers" class="table">
   <thead>
     <tr>
-      <th>Num.</th>
+      <th>{{ "Num." | titlecase }}</th>
       <th>Name</th>
       <th>Surname</th>
       <th>Phone</th>
@@ -16,12 +16,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>{{ customers.length }}</td>
-      <td>{{ customers[0].firstName }}</td>
-      <td>{{ customers[0].lastName }}</td>
-      <td>{{ customers[0].phone }}</td>
-      <td>{{ customers[0].email }}</td>
+    <tr
+      [ngClass]="odd ? 'bg-success' : 'bg-light'"
+      *ngFor="let customer of customers; index as i; odd as odd"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ customer.firstName | textCapital }}</td>
+      <td>{{ customer.lastName | textCapital }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.email }}</td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #noCustomers>
+  <div class="p-2">
+    {{ "no Customers where found in the database" | textCapital }}
+  </div>
+</ng-template>
