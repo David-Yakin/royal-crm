@@ -1,0 +1,10 @@
+<li class="col-12 p-0">
+  <a
+    [routerLink]="link.link"
+    routerLinkActive="active"
+    class="nav-link text-light px-2 px-sm-3"
+  >
+    <i [class]="link.icon" [title]="link.text"></i>
+    <span class="mx-2 d-none d-lg-inline">{{ link.text | titlecase }} </span>
+  </a>
+</li>

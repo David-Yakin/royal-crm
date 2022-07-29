@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr
-      [ngClass]="odd ? 'bg-success' : 'bg-light'"
+      [ngClass]="odd ? 'alert-success' : 'bg-light'"
       *ngFor="let customer of customers; index as i; odd as odd"
     >
       <td>{{ i + 1 }}</td>

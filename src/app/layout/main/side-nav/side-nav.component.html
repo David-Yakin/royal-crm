@@ -1,1 +1,9 @@
-<p class="text-light">side-nav works!</p>
+<ul *ngIf="links.length; else noLinks" class="p-0 m-0">
+  <side-nav-link *ngFor="let link of links" [link]="link"></side-nav-link>
+</ul>
+
+<ng-template #noLinks>
+  <ul>
+    <li class="nav-link text-light px-2">Enter links!</li>
+  </ul></ng-template
+>
