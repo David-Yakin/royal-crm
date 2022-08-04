@@ -19,10 +19,34 @@ import { TextCapitalPipe } from './pipes/text-capital.pipe';
 import { SideNavLinkComponent } from './layout/main/side-nav/side-nav-link/side-nav-link.component';
 import { ContactsPageComponent } from './pages/Contacts/contacts-page/contacts-page.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { NewCustomerComponent } from './pages/Customers/new-customer/new-customer.component';
 
 @NgModule({
-  declarations: [AppComponent, CustomersPageComponent, HeaderComponent, FooterComponent, MainComponent, SideNavComponent, LogoComponent, HamburgerComponent, LeftTopNavComponent, RightTopNavComponent, LoggedComponent, NotLoggedComponent, PageHeaderComponent, TopNavLinkComponent, TextCapitalPipe, SideNavLinkComponent, ContactsPageComponent, ErrorPageComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    CustomersPageComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    SideNavComponent,
+    LogoComponent,
+    HamburgerComponent,
+    LeftTopNavComponent,
+    RightTopNavComponent,
+    LoggedComponent,
+    NotLoggedComponent,
+    PageHeaderComponent,
+    TopNavLinkComponent,
+    TextCapitalPipe,
+    SideNavLinkComponent,
+    ContactsPageComponent,
+    ErrorPageComponent,
+    LoginPageComponent,
+    NewCustomerComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

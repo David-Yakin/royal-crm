@@ -5,6 +5,15 @@
 >
 </page-header>
 
+<div class="mb-2">
+  <a
+    routerLink="new-customer"
+    class="btn btn-outline-dark"
+    title="Add new customer"
+    >{{ "add customer" | titlecase }}</a
+  >
+</div>
+
 <table *ngIf="customers.length; else noCustomers" class="table">
   <thead>
     <tr>
