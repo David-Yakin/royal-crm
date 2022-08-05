@@ -22,6 +22,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NewCustomerComponent } from './pages/Customers/new-customer/new-customer.component';
+import { CustomerFormComponent } from './pages/Customers/customer-form/customer-form.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NewCustomerComponent } from './pages/Customers/new-customer/new-custome
     ErrorPageComponent,
     LoginPageComponent,
     NewCustomerComponent,
+    CustomerFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

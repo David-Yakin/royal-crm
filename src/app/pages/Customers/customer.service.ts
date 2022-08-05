@@ -43,4 +43,10 @@ export class CustomerService {
   getAll(): Customer[] {
     return this.customers;
   }
+
+  add(customer: Customer) {
+    customer._id =
+      String(this.customers.length + 1) + new Date() + Math.random();
+    return this.customers.push({ ...customer, createdAt: new Date() });
+  }
 }
