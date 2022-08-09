@@ -1,0 +1,89 @@
+<page-header
+  title="Customer details"
+  icon="fa fa-user"
+  details="Here you can find more details about the customer"
+></page-header>
+
+<div class="my-2">
+  <a routerLink="/customers" class="btn btn-outline-dark"
+    ><i class="fas fa-arrow-alt-circle-left"></i> {{ "back" | titlecase }}</a
+  >
+</div>
+
+<div *ngIf="customer; else noCustomer">
+  <div class="center">
+    <div class="col-12 col-md-11 col-lg-10">
+      <table
+        class="table table-success table-striped mt-2 table-bordered table-hover border-dark"
+      >
+        <tbody>
+          <tr>
+            <th class="col-4 col-lg-2">{{ "first name" | titlecase }}</th>
+            <td class="col-8 col-lg-10">
+              {{ customer.firstName | titlecase }}
+            </td>
+          </tr>
+          <tr>
+            <th>{{ "last name" | titlecase }}</th>
+            <td>{{ customer.lastName | titlecase }}</td>
+          </tr>
+          <tr>
+            <th>{{ "mail" | titlecase }}</th>
+            <td>{{ customer.email }}</td>
+          </tr>
+          <tr>
+            <th>{{ "phone" | titlecase }}</th>
+            <td>{{ customer.phone }}</td>
+          </tr>
+          <tr *ngIf="customer.address">
+            <th>{{ "address" | titlecase }}</th>
+            <td>
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th *ngIf="customer.address.state">
+                      {{ "state" | titlecase }}
+                    </th>
+                    <th>{{ "country" | titlecase }}</th>
+                    <th>{{ "city" | titlecase }}</th>
+                    <th>{{ "street" | titlecase }}</th>
+                    <th>{{ "house number" | titlecase }}</th>
+                    <th>{{ "zip" | titlecase }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td *ngIf="customer.address.state">
+                      {{ customer.address.state | titlecase }}
+                    </td>
+                    <td>{{ customer.address.country }}</td>
+                    <td>{{ customer.address.city }}</td>
+                    <td>{{ customer.address.street }}</td>
+                    <td>{{ customer.address.houseNumber }}</td>
+                    <td>
+                      {{
+                        customer.address.zip
+                          ? customer.address.zip
+                          : ("not none" | titlecase)
+                      }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr *ngIf="customer.notes">
+            <th>{{ "notes" | titlecase }}</th>
+            <td>{{ customer.notes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #noCustomer>
+  <div class="p-2">
+    {{ "no such Customer where found in the database" | textCapital }}
+  </div>
+</ng-template>

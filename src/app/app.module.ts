@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NewCustomerComponent } from './pages/Customers/new-customer/new-customer.component';
 import { CustomerFormComponent } from './pages/Customers/customer-form/customer-form.component';
+import { CustomerDetailsComponent } from './pages/Customers/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CustomerFormComponent } from './pages/Customers/customer-form/customer-
     LoginPageComponent,
     NewCustomerComponent,
     CustomerFormComponent,
+    CustomerDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

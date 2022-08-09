@@ -123,10 +123,11 @@
   <div ngModelGroup="address">
     <div class="row justify-content-center mt-2">
       <div class="col-md-5 mb-2 form-group">
-        <label for="firstName"
+        <label for="state"
           ><span class="text-danger"></span> {{ "state" | titlecase }}</label
         ><input
           ngModel
+          id="state"
           #stateField="ngModel"
           name="state"
           type="text"
@@ -233,7 +234,7 @@
           ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
         ><input
           ngModel
-          name="number"
+          name="zip"
           type="text"
           class="form-control"
           minlength="2"
