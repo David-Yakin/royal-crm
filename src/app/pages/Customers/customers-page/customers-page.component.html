@@ -38,7 +38,14 @@
       <td>{{ customer.lastName | textCapital }}</td>
       <td>{{ customer.phone }}</td>
       <td>{{ customer.email }}</td>
-      <td>edit</td>
+      <td>
+        <a
+          class="btn btn-outline-dark"
+          [routerLink]="['edit-customer', customer._id]"
+          role="button"
+          ><i class="fas fa-pen"></i
+        ></a>
+      </td>
       <td>
         <button
           class="btn btn-outline-dark"

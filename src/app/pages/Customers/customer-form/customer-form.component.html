@@ -1,11 +1,10 @@
-<p>customer-form works!</p>
 <form
   #customerForm="ngForm"
+  novalidate="novalidate"
   autocomplete="off"
   (ngSubmit)="onSubmit(customerForm)"
   class="form border rounded p-2"
 >
-  <!-- זיהוי -->
   <div class="center">
     <div class="col-md-10">
       <h6>{{ "Identification" | textCapital }}</h6>
@@ -15,12 +14,12 @@
 
   <div class="row justify-content-center mt-2">
     <div class="col-12 col-md-5 mb-2 form-group">
-      <label for="firstName"
+      <label for="first"
         ><span class="text-danger">*</span>
         {{ "first name" | titlecase }}</label
       ><input
-        id="firstName"
-        ngModel
+        id="first"
+        [(ngModel)]="customer.firstName"
         name="firstName"
         type="text"
         class="form-control"
@@ -38,10 +37,11 @@
     </div>
 
     <div class="col-md-5 mb-2 form-group">
-      <label for="zip"
+      <label for="last"
         ><span class="text-danger">*</span> {{ "last name" | titlecase }}</label
       ><input
-        ngModel
+        id="last"
+        [(ngModel)]="customer.lastName"
         #lastNameField="ngModel"
         name="lastName"
         type="text"
@@ -59,7 +59,6 @@
     </div>
   </div>
 
-  <!-- דרכי התקשרות -->
   <div class="center">
     <div class="col-md-10">
       <h6>{{ "means of communication" | textCapital }}</h6>
@@ -72,7 +71,8 @@
       <label for="email"
         ><span class="text-danger">*</span> {{ "email" | titlecase }}</label
       ><input
-        ngModel
+        [(ngModel)]="customer.email"
+        id="email"
         #emailField="ngModel"
         name="email"
         type="email"
@@ -93,7 +93,8 @@
       <label for="phone"
         ><span class="text-danger">*</span> {{ "phone" | titlecase }}</label
       ><input
-        ngModel
+        [(ngModel)]="customer.phone"
+        id="phone"
         #phoneField="ngModel"
         name="phone"
         pattern="0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}"
@@ -112,7 +113,6 @@
     </div>
   </div>
 
-  <!-- כתובת -->
   <div class="center">
     <div class="col-md-10">
       <h6>{{ "Address" | textCapital }}</h6>
@@ -126,7 +126,7 @@
         <label for="state"
           ><span class="text-danger"></span> {{ "state" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.state"
           id="state"
           #stateField="ngModel"
           name="state"
@@ -146,7 +146,8 @@
         <label for="country"
           ><span class="text-danger">*</span> {{ "country" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.country"
+          id="country"
           #countryField="ngModel"
           name="country"
           type="text"
@@ -169,7 +170,8 @@
         <label for="city"
           ><span class="text-danger">*</span> {{ "city" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.city"
+          id="city"
           name="city"
           type="text"
           class="form-control"
@@ -189,7 +191,8 @@
         <label for="street"
           ><span class="text-danger">*</span> {{ "street" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.street"
+          id="street"
           name="street"
           type="text"
           class="form-control"
@@ -213,7 +216,8 @@
           ><span class="text-danger">*</span>
           {{ "houseNumber" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.houseNumber"
+          id="houseNumber"
           name="houseNumber"
           type="number"
           class="form-control"
@@ -233,7 +237,8 @@
         <label for="zip"
           ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
         ><input
-          ngModel
+          [(ngModel)]="customer.address.zip"
+          id="zip"
           name="zip"
           type="text"
           class="form-control"
@@ -251,7 +256,6 @@
     </div>
   </div>
 
-  <!-- אחר -->
   <div class="center">
     <div class="col-md-10">
       <h6>{{ "other info" | textCapital }}</h6>
@@ -263,7 +267,8 @@
     <div class="col-md-10 mb-2">
       <label for="notes">{{ "notes" | titlecase }}</label>
       <textarea
-        ngModel
+        [(ngModel)]="customer.notes"
+        id="notes"
         name="notes"
         class="form-control"
         cols="30"
@@ -272,21 +277,17 @@
       ></textarea>
     </div>
   </div>
+
   <div class="p-3 text-center">
-    <a
-      routerLink="/customers"
-      class="btn btn-danger ms-3"
-      role="button"
-      title="cancel"
-      >{{ "cancel" | titlecase }}</a
-    >
+    <a routerLink="/customers" class="btn btn-danger ms-3" title="cancel">{{
+      "cancel" | titlecase
+    }}</a>
 
     <input
       type="button"
       (click)="resetForm(customerForm)"
       class="btn btn-secondary ms-3"
       value="{{ 'reset' | titlecase }}"
-      role="button"
       title="Reset form"
     />
 

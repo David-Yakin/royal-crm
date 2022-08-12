@@ -66,4 +66,12 @@ export class CustomerService {
     if (customerIndex === -1) return;
     this.customers.splice(customerIndex, 1);
   }
+
+  edit(customer: Customer) {
+    let index = this.customers.findIndex(
+      (customerFromDb) => customerFromDb._id === customer._id
+    );
+    if (index === -1) return;
+    this.customers[index] = customer;
+  }
 }
