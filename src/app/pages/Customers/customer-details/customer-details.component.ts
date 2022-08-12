@@ -10,12 +10,15 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerDetailsComponent implements OnInit {
   customer: Customer | void = undefined;
-  constructor(private router: ActivatedRoute, private CS: CustomerService) {}
+  constructor(private AR: ActivatedRoute, private CS: CustomerService) {}
 
   ngOnInit(): void {
-    this.router.paramMap.subscribe((param: ParamMap) => {
+    this.AR.paramMap.subscribe((param: ParamMap) => {
       const id = param.get('id');
-      this.customer = this.CS.getCustomer(id!);
+      this.customer = this.CS.getCustomer(
+        id!,
+        (customer: Customer | void) => (this.customer = customer)
+      );
     });
   }
 }

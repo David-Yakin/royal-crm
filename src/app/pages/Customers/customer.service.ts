@@ -47,11 +47,16 @@ export class CustomerService {
   add(customer: Customer) {
     customer._id =
       String(this.customers.length + 1) + new Date() + Math.random();
-    return this.customers.push({ ...customer, createdAt: new Date() });
+    customer.createdAt = new Date();
+    this.customers.push(customer);
+    return;
   }
 
-  getCustomer(id: string): Customer | void {
-    return this.customers.find((customer: Customer) => customer._id === id);
+  getCustomer(id: string, cb: Function): Customer | void {
+    const customer = this.customers.find(
+      (customerFromDb: Customer) => customerFromDb._id === id
+    );
+    return cb(customer);
   }
 
   delete(id: string) {
