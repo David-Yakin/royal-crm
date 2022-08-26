@@ -25,6 +25,7 @@ import { NewCustomerComponent } from './pages/Customers/new-customer/new-custome
 import { CustomerFormComponent } from './pages/Customers/customer-form/customer-form.component';
 import { CustomerDetailsComponent } from './pages/Customers/customer-details/customer-details.component';
 import { EditCustomerComponent } from './pages/Customers/edit-customer/edit-customer.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { EditCustomerComponent } from './pages/Customers/edit-customer/edit-cust
     CustomerFormComponent,
     CustomerDetailsComponent,
     EditCustomerComponent,
+    SearchBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

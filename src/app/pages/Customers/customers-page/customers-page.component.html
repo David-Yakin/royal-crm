@@ -14,6 +14,13 @@
   >
 </div>
 
+<search-bar
+  *ngIf="customers"
+  [categories]="categories"
+  [array]="customersRowData"
+  (onArrayFiltered)="onSearch($event)"
+></search-bar>
+
 <table *ngIf="customers.length; else noCustomers" class="table">
   <thead>
     <tr>
