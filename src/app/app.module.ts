@@ -26,6 +26,9 @@ import { CustomerFormComponent } from './pages/Customers/customer-form/customer-
 import { CustomerDetailsComponent } from './pages/Customers/customer-details/customer-details.component';
 import { EditCustomerComponent } from './pages/Customers/edit-customer/edit-customer.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { CustomersFoldersComponent } from './pages/Customers/customers-display-mode/customers-folders/customers-folders.component';
+import { CustomersTableComponent } from './pages/Customers/customers-display-mode/customers-table/customers-table.component';
+import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     CustomerDetailsComponent,
     EditCustomerComponent,
     SearchBarComponent,
+    CustomersFoldersComponent,
+    CustomersTableComponent,
+    DisplayModeControllersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -4,14 +4,20 @@
   icon="fas fa-users"
 >
 </page-header>
+<div class="d-flex justify-content-between">
+  <div class="my-2">
+    <a
+      routerLink="new-customer"
+      class="btn btn-outline-dark"
+      title="Add new customer"
+      ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
+    >
+  </div>
 
-<div class="mb-2">
-  <a
-    routerLink="new-customer"
-    class="btn btn-outline-dark"
-    title="Add new customer"
-    >{{ "add customer" | titlecase }}</a
-  >
+  <display-mode-controllers
+    [controllers]="controllers"
+    (onChangeDisplay)="onChangeDisplay($event)"
+  ></display-mode-controllers>
 </div>
 
 <search-bar
@@ -21,49 +27,18 @@
   (onArrayFiltered)="onSearch($event)"
 ></search-bar>
 
-<table *ngIf="customers.length; else noCustomers" class="table">
-  <thead>
-    <tr>
-      <th>{{ "Num." | titlecase }}</th>
-      <th>{{ "Name" | titlecase }}</th>
-      <th>{{ "Surname" | titlecase }}</th>
-      <th>{{ "Phone" | titlecase }}</th>
-      <th>{{ "Email" | titlecase }}</th>
-      <th>{{ "Edit" | titlecase }}</th>
-      <th>{{ "Delete" | titlecase }}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      [ngClass]="odd ? 'alert-success' : 'bg-light'"
-      *ngFor="let customer of customers; index as i; odd as odd"
-      [routerLink]="['customer-details', customer._id]"
-      role="button"
-    >
-      <td>{{ i + 1 }}</td>
-      <td>{{ customer.firstName | textCapital }}</td>
-      <td>{{ customer.lastName | textCapital }}</td>
-      <td>{{ customer.phone }}</td>
-      <td>{{ customer.email }}</td>
-      <td>
-        <a
-          class="btn btn-outline-dark"
-          [routerLink]="['edit-customer', customer._id]"
-          role="button"
-          ><i class="fas fa-pen"></i
-        ></a>
-      </td>
-      <td>
-        <button
-          class="btn btn-outline-dark"
-          (click)="deleteCustomer($event, customer._id!)"
-        >
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="customers && customers.length; else noCustomers">
+  <customers-table
+    *ngIf="display === 'table'"
+    [customers]="customers"
+    (onDeleteCustomer)="deleteCustomer($event)"
+  ></customers-table>
+
+  <customers-folders
+    [customers]="customers"
+    *ngIf="display === 'folder'"
+  ></customers-folders>
+</div>
 
 <ng-template #noCustomers>
   <div class="p-2">

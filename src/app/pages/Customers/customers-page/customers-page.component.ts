@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Controller } from 'src/app/components/display-mode-controllers/controller';
 import { Category } from 'src/app/components/search-bar/category';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
@@ -18,19 +19,25 @@ export class CustomersPageComponent implements OnInit {
     { name: 'Phone', value: 'phone' },
     { name: 'Notes', value: 'notes' },
   ];
+  controllers: Array<Controller> = [
+    { icon: 'fa fa-table-list', value: 'table' },
+    { icon: 'fa fa-folder', value: 'folder' },
+  ];
+  display: string = 'table';
 
-  constructor(private CS: CustomerService) {
-    this.customers = CS.getAll();
-  }
+  constructor(private CS: CustomerService) {}
 
   onSearch(array: Customer[]) {
     this.customers = array;
   }
 
-  deleteCustomer(e: MouseEvent, id: string) {
-    e.stopPropagation();
-    this.CS.delete(id);
-    this.customers = this.CS.getAll();
+  deleteCustomer(array: Array<Customer>) {
+    this.customersRowData = array;
+    this.customers = this.customersRowData;
+  }
+
+  onChangeDisplay(display: string) {
+    this.display = display;
   }
 
   ngOnInit() {
