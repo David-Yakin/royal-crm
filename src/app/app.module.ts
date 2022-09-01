@@ -29,6 +29,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CustomersFoldersComponent } from './pages/Customers/customers-display-mode/customers-folders/customers-folders.component';
 import { CustomersTableComponent } from './pages/Customers/customers-display-mode/customers-table/customers-table.component';
 import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,14 @@ import { DisplayModeControllersComponent } from './components/display-mode-contr
     CustomersTableComponent,
     DisplayModeControllersComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

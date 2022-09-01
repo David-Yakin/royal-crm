@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "royal-crm-83252": {
+      "hosting": {
+        "royal-crm": [
+          "royal-crm-83252"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "royal-crm-83252"
+  }
+}

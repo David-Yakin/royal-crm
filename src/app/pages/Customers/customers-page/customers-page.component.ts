@@ -10,7 +10,7 @@ import { CustomerService } from '../customer.service';
   styles: [],
 })
 export class CustomersPageComponent implements OnInit {
-  customersRowData: Array<Customer> | void = undefined;
+  customersRowData: Array<Customer> = [];
   customers: Array<Customer> = [];
   categories: Array<Category> = [
     { name: 'First Name', value: 'firstName' },
@@ -42,6 +42,6 @@ export class CustomersPageComponent implements OnInit {
 
   ngOnInit() {
     this.customersRowData = this.CS.getAll();
-    this.customers = [...this.customersRowData];
+    this.customers = this.customersRowData;
   }
 }

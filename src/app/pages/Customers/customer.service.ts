@@ -1,4 +1,11 @@
 import { Injectable } from '@angular/core';
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  Firestore,
+  onSnapshot,
+} from '@angular/fire/firestore';
 import { Customer } from './customer';
 
 @Injectable({
@@ -40,9 +47,29 @@ export class CustomerService {
     },
   ];
 
-  getAll(): Customer[] {
-    return this.customers;
+  collectionRef: CollectionReference<DocumentData> = collection(
+    this.FS,
+    'customers'
+  );
+
+  getAll() {
+    let customers: any = [];
+    onSnapshot(this.collectionRef, (snapShotData) => {
+      snapShotData.docs.forEach((customer) => {
+        customers.push({
+          ...customer.data(),
+          _id: customer.id,
+        });
+      });
+    });
+    return customers;
   }
+
+  // getAll(): Customer[] {
+  //   return this.customers;
+  // }
+
+  constructor(private FS: Firestore) {}
 
   add(customer: Customer) {
     customer._id =
