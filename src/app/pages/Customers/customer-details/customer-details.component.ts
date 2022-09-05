@@ -9,16 +9,17 @@ import { CustomerService } from '../customer.service';
   styles: [],
 })
 export class CustomerDetailsComponent implements OnInit {
+  createdAt: any;
   customer: Customer | void = undefined;
   constructor(private AR: ActivatedRoute, private CS: CustomerService) {}
 
   ngOnInit(): void {
     this.AR.paramMap.subscribe((param: ParamMap) => {
       const id = param.get('id');
-      this.customer = this.CS.getCustomer(
-        id!,
-        (customer: Customer | void) => (this.customer = customer)
-      );
+      this.CS.getCustomer(id!, (customer: Customer) => {
+        this.customer = customer;
+        this.createdAt = new Date(customer.createdAt?.seconds * 1000);
+      });
     });
   }
 }

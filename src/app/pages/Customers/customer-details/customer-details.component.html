@@ -72,6 +72,10 @@
               </table>
             </td>
           </tr>
+          <tr *ngIf="createdAt">
+            <th>{{ "created at" | titlecase }}</th>
+            <td>{{ createdAt | date: "dd/MM/yyyy" }}</td>
+          </tr>
           <tr *ngIf="customer.notes">
             <th>{{ "notes" | titlecase }}</th>
             <td>{{ customer.notes }}</td>

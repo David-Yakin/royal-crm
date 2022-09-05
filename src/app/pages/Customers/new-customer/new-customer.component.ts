@@ -12,7 +12,6 @@ export class NewCustomerComponent {
   constructor(private CS: CustomerService, private routerService: Router) {}
 
   onSubmit(customer: Customer) {
-    this.CS.add(customer);
-    this.routerService.navigate(['/customers']);
+    this.CS.add(customer, () => this.routerService.navigate(['/customers']));
   }
 }
