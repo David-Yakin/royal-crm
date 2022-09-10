@@ -6,7 +6,8 @@ import { CustomersPageComponent } from '../pages/Customers/customers-page/custom
 import { EditCustomerComponent } from '../pages/Customers/edit-customer/edit-customer.component';
 import { NewCustomerComponent } from '../pages/Customers/new-customer/new-customer.component';
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
-import { LoginPageComponent } from '../pages/login-page/login-page.component';
+import { LoginPageComponent } from '../pages/Users/login-page/login-page.component';
+import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   },
   { path: 'customers/edit-customer/:id', component: EditCustomerComponent },
   { path: 'contacts', component: ContactsPageComponent },
+  { path: 'signup', component: SignupPageComponent },
   { path: '**', component: ErrorPageComponent },
 ];
 
