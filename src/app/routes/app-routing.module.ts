@@ -8,18 +8,41 @@ import { NewCustomerComponent } from '../pages/Customers/new-customer/new-custom
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/Users/login-page/login-page.component';
 import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
+import { AuthGuard } from './auth.guard';
+import { LoggedGuard } from './logged.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'customers', component: CustomersPageComponent },
-  { path: 'customers/new-customer', component: NewCustomerComponent },
+  {
+    path: 'customers',
+    component: CustomersPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'customers/new-customer',
+    component: NewCustomerComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'customers/customer-details/:id',
     component: CustomerDetailsComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'customers/edit-customer/:id', component: EditCustomerComponent },
-  { path: 'contacts', component: ContactsPageComponent },
-  { path: 'signup', component: SignupPageComponent },
+  {
+    path: 'customers/edit-customer/:id',
+    component: EditCustomerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts',
+    component: ContactsPageComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '', component: LoginPageComponent, canActivate: [LoggedGuard] },
+  {
+    path: 'signup',
+    component: SignupPageComponent,
+    canActivate: [LoggedGuard],
+  },
   { path: '**', component: ErrorPageComponent },
 ];
 

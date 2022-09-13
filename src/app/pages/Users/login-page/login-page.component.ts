@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { Login } from './login';
 
 @Component({
   selector: 'login-page',
   templateUrl: './login-page.component.html',
   styles: [],
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   error: boolean = false;
   counter: number = 0;
   threeFailedAttemptsToLogin: boolean = false;
@@ -54,5 +53,11 @@ export class LoginPageComponent {
 
   resetForm(form: NgForm) {
     form.resetForm();
+  }
+
+  ngOnInit() {
+    this.US.getUserStatus((user: any) => {
+      if (user) this.router.navigate(['/customers']);
+    });
   }
 }
