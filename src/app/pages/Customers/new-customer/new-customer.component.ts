@@ -9,9 +9,9 @@ import { CustomerService } from '../customer.service';
   styles: [],
 })
 export class NewCustomerComponent {
-  constructor(private CS: CustomerService, private routerService: Router) {}
+  constructor(private CS: CustomerService, private router: Router) {}
 
   onSubmit(customer: Customer) {
-    this.CS.add(customer, () => this.routerService.navigate(['/customers']));
+    this.CS.add(customer, () => this.router.navigate(['/customers']));
   }
 }

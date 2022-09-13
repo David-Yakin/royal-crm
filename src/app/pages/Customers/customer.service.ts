@@ -27,7 +27,7 @@ export class CustomerService {
 
   getAll(cb: Function) {
     let customers: any = [];
-    onSnapshot(this.collectionRef, (snapShotData) => {
+    const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((customer) => {
         customers.push({
           ...customer.data(),
@@ -35,13 +35,11 @@ export class CustomerService {
         });
       });
     });
-    return cb(customers);
+    return cb(customers, unsubscribeGetAll);
   }
 
   add(customer: Customer, cb: Function) {
-    customer.createdAt = new Date();
     customer.createdAt = serverTimestamp();
-
     addDoc(this.collectionRef, customer)
       .then(() => cb())
       .catch((error) => console.log(error));

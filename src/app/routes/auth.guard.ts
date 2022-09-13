@@ -7,7 +7,6 @@ import {
 } from '@angular/router';
 import { UserService } from '../pages/Users/user.service';
 import { Observable, of } from 'rxjs';
-import {} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

@@ -38,13 +38,13 @@ const routes: Routes = [
     component: ContactsPageComponent,
     canActivate: [AuthGuard],
   },
-  { path: '', component: LoginPageComponent, canActivate: [LoggedGuard] },
   {
     path: 'signup',
     component: SignupPageComponent,
     canActivate: [LoggedGuard],
   },
   { path: 'about', component: AboutComponent },
+  { path: '', component: LoginPageComponent, canActivate: [LoggedGuard] },
   { path: '**', component: ErrorPageComponent },
 ];
 

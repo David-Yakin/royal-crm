@@ -1,10 +1,8 @@
 {
   "hosting": {
     "target": "royal-crm",
-    "public": "dist/royal-crm",
-    "ignore": [
-      "**/.*"
-    ],
+    "public": "./dist/royal-crm",
+    "ignore": ["**/.*"],
     "headers": [
       {
         "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",

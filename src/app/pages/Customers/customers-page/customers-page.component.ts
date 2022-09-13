@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Controller } from 'src/app/components/display-mode-controllers/controller';
 import { Category } from 'src/app/components/search-bar/category';
 import { Customer } from '../customer';
@@ -9,7 +9,7 @@ import { CustomerService } from '../customer.service';
   templateUrl: './customers-page.component.html',
   styles: [],
 })
-export class CustomersPageComponent implements OnInit {
+export class CustomersPageComponent implements OnInit, OnDestroy {
   customersRowData: Array<Customer> = [];
   customers: Array<Customer> = [];
   categories: Array<Category> = [
@@ -25,6 +25,7 @@ export class CustomersPageComponent implements OnInit {
   ];
   display: string = 'table';
   dataReceived: boolean = false;
+  unsubscribeGetAll: Function = () => {};
 
   constructor(private CS: CustomerService) {}
 
@@ -42,10 +43,15 @@ export class CustomersPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.CS.getAll((customers: Customer[]) => {
+    this.CS.getAll((customers: Customer[], unsubscribeGetAll: Function) => {
       this.customersRowData = customers;
       this.customers = this.customersRowData;
       this.dataReceived = true;
+      this.unsubscribeGetAll = unsubscribeGetAll;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeGetAll();
   }
 }
