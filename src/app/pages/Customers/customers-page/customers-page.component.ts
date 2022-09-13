@@ -24,6 +24,7 @@ export class CustomersPageComponent implements OnInit {
     { icon: 'fa fa-folder', value: 'folder' },
   ];
   display: string = 'table';
+  dataReceived: boolean = false;
 
   constructor(private CS: CustomerService) {}
 
@@ -44,6 +45,7 @@ export class CustomersPageComponent implements OnInit {
     this.CS.getAll((customers: Customer[]) => {
       this.customersRowData = customers;
       this.customers = this.customersRowData;
+      this.dataReceived = true;
     });
   }
 }

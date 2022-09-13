@@ -11,6 +11,8 @@ import { CustomerService } from '../customer.service';
 export class CustomerDetailsComponent implements OnInit {
   createdAt: any;
   customer: Customer | void = undefined;
+  dataReceived: boolean = false;
+
   constructor(private AR: ActivatedRoute, private CS: CustomerService) {}
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class CustomerDetailsComponent implements OnInit {
       this.CS.getCustomer(id!, (customer: Customer) => {
         this.customer = customer;
         this.createdAt = new Date(customer.createdAt?.seconds * 1000);
+        this.dataReceived = true;
       });
     });
   }

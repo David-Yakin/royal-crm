@@ -4,14 +4,20 @@
   icon="fas fa-user-edit"
 ></page-header>
 
-<customer-form
-  *ngIf="customer; else noCustomer"
-  [customer]="customer"
-  (reset)="resetForm()"
-  (submit)="onSubmit($event)"
-></customer-form>
+<div *ngIf="dataReceived; else loader">
+  <customer-form
+    *ngIf="customer; else noCustomer"
+    [customer]="customer"
+    (reset)="resetForm()"
+    (submit)="onSubmit($event)"
+  ></customer-form>
 
-<ng-template #noCustomer>{{
-  "Oops it looks like there is no customer with this ID in the database"
-    | textCapital
-}}</ng-template>
+  <ng-template #noCustomer>{{
+    "Oops it looks like there is no customer with this ID in the database"
+      | textCapital
+  }}</ng-template>
+</div>
+
+<ng-template #loader>
+  <spinner-loader></spinner-loader>
+</ng-template>

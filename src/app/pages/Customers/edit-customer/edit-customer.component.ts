@@ -12,6 +12,7 @@ export class EditCustomerComponent implements OnInit {
   customer: Customer | void = undefined;
   id: string | null = null;
   createdAt: Date | void = undefined;
+  dataReceived: boolean = false;
 
   constructor(
     private CS: CustomerService,
@@ -41,6 +42,7 @@ export class EditCustomerComponent implements OnInit {
       this.CS.getCustomer(id!, (customer: Customer) => {
         this.customer = customer;
         this.createdAt = customer.createdAt;
+        this.dataReceived = true;
       });
     });
   }
