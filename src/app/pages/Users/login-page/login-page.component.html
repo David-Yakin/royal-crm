@@ -63,16 +63,6 @@
       <a routerLink="/signup" class="fw-bold">Click hear...</a>
     </div>
 
-    <!-- 
-    <input
-      type="button"
-      value="Google"
-      class="btn btn-outline-dark col-12 mb-2"
-      role="button"
-      title="Login with google"
-      (click)="loginWithGoogle()"
-    /> -->
-
     <input
       *ngIf="!threeFailedAttemptsToLogin"
       type="button"
@@ -89,6 +79,15 @@
     >
       {{ "submit" | titlecase }}
     </button>
+
+    <input
+      type="button"
+      value="Google"
+      class="btn btn-outline-dark col-12 my-2"
+      role="button"
+      title="Login with google"
+      (click)="loginWithGoogle()"
+    />
 
     <div *ngIf="error" class="text-danger mt-2 text-center">
       The username or password is incorrect!

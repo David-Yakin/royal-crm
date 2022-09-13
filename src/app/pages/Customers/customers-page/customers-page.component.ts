@@ -41,7 +41,9 @@ export class CustomersPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customersRowData = this.CS.getAll();
-    this.customers = this.customersRowData;
+    this.CS.getAll((customers: Customer[]) => {
+      this.customersRowData = customers;
+      this.customers = this.customersRowData;
+    });
   }
 }

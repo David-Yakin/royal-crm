@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
   selector: 'right-top-nav',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class RightTopNavComponent implements OnInit {
-  constructor() {}
+  user: any;
+  constructor(private US: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.US.getUserStatus((user: any) => (this.user = user));
+  }
 }

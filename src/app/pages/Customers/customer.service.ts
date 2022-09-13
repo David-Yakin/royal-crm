@@ -18,47 +18,14 @@ import { Customer } from './customer';
   providedIn: 'root',
 })
 export class CustomerService {
-  private customers: Customer[] = [
-    {
-      _id: 'myIdIs1',
-      firstName: 'Regular',
-      lastName: 'User',
-      email: 'user@gmail.com',
-      phone: '050-0000000',
-      address: {
-        country: 'israel',
-        city: 'tel-aviv',
-        street: 'rotshild',
-        houseNumber: 0,
-        zip: 1234,
-      },
-      createdAt: new Date(),
-      notes: 'a very good customer!',
-    },
-    {
-      _id: '2',
-      firstName: 'admin',
-      lastName: 'User',
-      email: 'admin@gmail.com',
-      phone: '050-0000000',
-      address: {
-        country: 'israel',
-        city: 'tel-aviv',
-        street: 'rotshild',
-        houseNumber: 0,
-        zip: 1234,
-      },
-      createdAt: new Date(),
-      notes: 'a very bad customer!',
-    },
-  ];
-
   collectionRef: CollectionReference<DocumentData> = collection(
     this.FS,
     'customers'
   );
 
-  getAll() {
+  constructor(private FS: Firestore) {}
+
+  getAll(cb: Function) {
     let customers: any = [];
     onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((customer) => {
@@ -68,28 +35,12 @@ export class CustomerService {
         });
       });
     });
-    return customers;
+    return cb(customers);
   }
 
-  // getAll(): Customer[] {
-  //   return this.customers;
-  // }
-
-  constructor(private FS: Firestore) {}
-
-  // add(customer: Customer) {
-  //   customer._id =
-  //     String(this.customers.length + 1) + new Date() + Math.random();
-
-  //   customer.createdAt = new Date();
-  //   this.customers.push(customer);
-  //   return;
-  // }
   add(customer: Customer, cb: Function) {
     customer.createdAt = new Date();
     customer.createdAt = serverTimestamp();
-
-    // console.log(customer);
 
     addDoc(this.collectionRef, customer)
       .then(() => cb())
@@ -107,25 +58,10 @@ export class CustomerService {
     }
   }
 
-  // getCustomer(id: string, cb: Function): Customer | void {
-  //   const customer = this.customers.find(
-  //     (customerFromDb: Customer) => customerFromDb._id === id
-  //   );
-  //   return cb(customer);
-  // }
-
   delete(id: string) {
     const docRef = doc(this.FS, 'customers', id);
     deleteDoc(docRef).catch((error) => console.log(error));
   }
-
-  // delete(id: string) {
-  //   let customerIndex = this.customers.findIndex(
-  //     (customer: Customer) => customer._id === id
-  //   );
-  //   if (customerIndex === -1) return;
-  //   this.customers.splice(customerIndex, 1);
-  // }
 
   edit(customer: Customer, id: string, cb: Function) {
     const docRef = doc(this.FS, 'customers', id);
@@ -133,12 +69,40 @@ export class CustomerService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-
-  // edit(customer: Customer) {
-  //   let index = this.customers.findIndex(
-  //     (customerFromDb) => customerFromDb._id === customer._id
-  //   );
-  //   if (index === -1) return;
-  //   this.customers[index] = customer;
-  // }
 }
+
+// getAll(): Customer[] {
+//   return this.customers;
+// }
+
+// getCustomer(id: string, cb: Function): Customer | void {
+//   const customer = this.customers.find(
+//     (customerFromDb: Customer) => customerFromDb._id === id
+//   );
+//   return cb(customer);
+// }
+
+// add(customer: Customer) {
+//   customer._id =
+//     String(this.customers.length + 1) + new Date() + Math.random();
+
+//   customer.createdAt = new Date();
+//   this.customers.push(customer);
+//   return;
+// }
+
+// edit(customer: Customer) {
+//   let index = this.customers.findIndex(
+//     (customerFromDb) => customerFromDb._id === customer._id
+//   );
+//   if (index === -1) return;
+//   this.customers[index] = customer;
+// }
+
+// delete(id: string) {
+//   let customerIndex = this.customers.findIndex(
+//     (customer: Customer) => customer._id === id
+//   );
+//   if (customerIndex === -1) return;
+//   this.customers.splice(customerIndex, 1);
+// }

@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -39,6 +42,20 @@ export class UserService {
         cb(credentials);
       })
       .catch(() => cb(null));
+  }
+
+  signupAndLoginWithGoogle(cb: Function) {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(this.auth, provider)
+      .then((data) => {
+        console.log('Logged successful with google');
+        cb(data);
+      })
+      .catch(() => cb(null));
+  }
+
+  getUserStatus(cb: Function) {
+    return onAuthStateChanged(this.auth, (user) => cb(user));
   }
 }
 

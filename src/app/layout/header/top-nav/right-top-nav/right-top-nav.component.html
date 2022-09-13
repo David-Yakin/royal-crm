@@ -1,4 +1,6 @@
 <div class="text-light">
-  <not-logged></not-logged>
-  <app-logged></app-logged>
+  <not-logged *ngIf="!user; else login"></not-logged>
+  <ng-template #login>
+    <app-logged></app-logged>
+  </ng-template>
 </div>

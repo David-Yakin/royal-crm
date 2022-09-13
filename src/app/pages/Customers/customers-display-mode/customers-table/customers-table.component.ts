@@ -12,13 +12,15 @@ export class CustomersTableComponent {
   @Output() onDeleteCustomer = new EventEmitter();
 
   constructor(private CS: CustomerService) {
-    this.customers = CS.getAll();
+    CS.getAll((customers: Customer[]) => (this.customers = customers));
   }
 
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.customers = this.CS.getAll();
-    this.onDeleteCustomer.emit(this.customers);
+    this.CS.getAll((customers: Customer[]) => {
+      this.customers = customers;
+      this.onDeleteCustomer.emit(customers);
+    });
   }
 }
