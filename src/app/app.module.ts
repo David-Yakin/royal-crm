@@ -35,6 +35,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { SignupPageComponent } from './pages/Users/signup-page/signup-page.component';
 import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-loader.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-load
     DisplayModeControllersComponent,
     SignupPageComponent,
     SpinnerLoaderComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

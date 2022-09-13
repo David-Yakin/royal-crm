@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from '../pages/about/about.component';
 import { ContactsPageComponent } from '../pages/Contacts/contacts-page/contacts-page.component';
 import { CustomerDetailsComponent } from '../pages/Customers/customer-details/customer-details.component';
 import { CustomersPageComponent } from '../pages/Customers/customers-page/customers-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     component: SignupPageComponent,
     canActivate: [LoggedGuard],
   },
+  { path: 'about', component: AboutComponent },
   { path: '**', component: ErrorPageComponent },
 ];
 
