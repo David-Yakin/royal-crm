@@ -11,9 +11,7 @@ export class CustomersTableComponent {
   @Input() customers: Customer[] = [];
   @Output() onDeleteCustomer = new EventEmitter();
 
-  constructor(private CS: CustomerService) {
-    CS.getAll((customers: Customer[]) => (this.customers = customers));
-  }
+  constructor(private CS: CustomerService) {}
 
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();

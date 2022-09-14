@@ -22,7 +22,6 @@ export class EditCustomerComponent implements OnInit {
 
   onSubmit(customer: Customer) {
     customer.createdAt = this.createdAt!;
-    // customer._id = this.id!;
     this.CS.edit(customer, this.id!, () =>
       this.router.navigate(['/customers'])
     );

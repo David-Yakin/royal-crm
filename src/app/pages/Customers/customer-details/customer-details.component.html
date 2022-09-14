@@ -36,7 +36,7 @@
               <th>{{ "phone" | titlecase }}</th>
               <td>{{ customer.phone }}</td>
             </tr>
-            <tr *ngIf="customer.address">
+            <tr class="d-none d-md-table-row" *ngIf="customer.address">
               <th>{{ "address" | titlecase }}</th>
               <td>
                 <table class="table m-0">
@@ -72,6 +72,38 @@
                   </tbody>
                 </table>
               </td>
+            </tr>
+            <tr
+              [ngClass]="
+                customer.address.state ? 'd-table-row d-md-none' : 'd-none'
+              "
+            >
+              <th>state</th>
+              <td>{{ customer.address.state }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>country</th>
+              <td>{{ customer.address.country }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>city</th>
+              <td>{{ customer.address.city }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>street</th>
+              <td>{{ customer.address.street }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>house number</th>
+              <td>{{ customer.address.houseNumber }}</td>
+            </tr>
+            <tr
+              [ngClass]="
+                customer.address.zip !== 0 ? 'd-table-row d-md-none' : 'd-none'
+              "
+            >
+              <th>zip</th>
+              <td>{{ customer.address.zip }}</td>
             </tr>
             <tr *ngIf="createdAt">
               <th>{{ "created at" | titlecase }}</th>

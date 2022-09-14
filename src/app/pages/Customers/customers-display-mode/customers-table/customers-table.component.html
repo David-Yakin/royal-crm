@@ -4,8 +4,8 @@
       <th>{{ "Num." | titlecase }}</th>
       <th>{{ "Name" | titlecase }}</th>
       <th>{{ "Surname" | titlecase }}</th>
-      <th>{{ "Phone" | titlecase }}</th>
-      <th>{{ "Email" | titlecase }}</th>
+      <th class="d-none d-md-table-cell">{{ "Phone" | titlecase }}</th>
+      <th class="d-none d-md-table-cell">{{ "Email" | titlecase }}</th>
       <th>{{ "Edit" | titlecase }}</th>
       <th>{{ "Delete" | titlecase }}</th>
     </tr>
@@ -20,8 +20,8 @@
       <td>{{ i + 1 }}</td>
       <td>{{ customer.firstName | textCapital }}</td>
       <td>{{ customer.lastName | textCapital }}</td>
-      <td>{{ customer.phone }}</td>
-      <td>{{ customer.email }}</td>
+      <td class="d-none d-md-table-cell">{{ customer.phone }}</td>
+      <td class="d-none d-md-table-cell">{{ customer.email }}</td>
       <td>
         <a
           class="btn btn-outline-dark"
