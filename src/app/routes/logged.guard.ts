@@ -1,23 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import {
-//   ActivatedRouteSnapshot,
-//   CanActivate,
-//   Router,
-//   RouterStateSnapshot,
-//   UrlTree,
-// } from '@angular/router';
-// import { Observable, of } from 'rxjs';
-// import { UserService } from '../pages/Users/user.service';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class LoggedGuard implements CanActivate {
-//   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-//     return true;
-//   }
-// }
-
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
